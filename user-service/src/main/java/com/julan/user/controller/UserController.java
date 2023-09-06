@@ -1,13 +1,19 @@
 package com.julan.user.controller;
 
 import com.julan.common.util.api.ResultJson;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.julan.user.service.impl.UserServiceImpl;
+import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/user")
 public class UserController {
-    @GetMapping("/user")
-    public ResultJson<Object> index() {
-        return ResultJson.success("User Service");
+
+    @Resource
+    UserServiceImpl userService;
+
+    @GetMapping("{id}")
+    public ResultJson<Object> index(@PathVariable("id") Long id) {
+        return ResultJson.success(userService.getUserById(id));
     }
 }

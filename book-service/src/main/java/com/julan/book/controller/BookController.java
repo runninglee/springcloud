@@ -1,17 +1,19 @@
 package com.julan.book.controller;
 
+import com.julan.book.service.impl.BooKServiceImpl;
 import com.julan.common.util.api.ResultJson;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/book")
 public class BookController {
 
-    @GetMapping
-    public ResultJson<Object> index(@RequestParam String id) {
-        return ResultJson.success("这是BooK Service的请求ID:" + id);
+    @Resource
+    BooKServiceImpl booKService;
+
+    @GetMapping("{id}")
+    public ResultJson<Object> index(@PathVariable("id") Long id) {
+        return ResultJson.success(booKService.getBookById(id));
     }
 }
