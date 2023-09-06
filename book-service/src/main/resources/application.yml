@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8011
 spring:
   application:
     name: Book-Service
@@ -9,3 +9,8 @@ spring:
         server-addr: 192.168.31.7:8848
         username: nacos
         password: fangxin12300.
+        cluster-name: HUABEI
+        weight: 0.5
+    loadbalancer:
+      nacos:
+        enabled: true

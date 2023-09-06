@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8021
 spring:
   application:
     name: User-Service
@@ -9,3 +9,11 @@ spring:
         server-addr: 192.168.31.7:8848
         username: nacos
         password: fangxin12300.
+        cluster-name: HUABEI
+        weight: 0.5
+      config:
+        file-extension: yml
+        server-addr: 192.168.31.7:8848
+    loadbalancer:
+      nacos:
+        enabled: true
