@@ -1,19 +1,22 @@
 package com.julan.book.controller;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
+
+
 import com.julan.book.service.impl.BooKServiceImpl;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
 @RequestMapping("/api/book")
+@RefreshScope
 public class BookController {
-
-    @NacosValue("${custom.name}")
-    private String name;
+    @Value(value = "${custom.name}")
+    public String name;
 
     @Resource
     BooKServiceImpl booKService;
+
 
     @GetMapping("{id}")
     public Object index(@PathVariable("id") Long id) {

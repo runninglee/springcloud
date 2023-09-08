@@ -9,7 +9,9 @@ spring:
     nacos:
       config:
         server-addr: 192.168.31.7:8848
-        file-extension: yaml
+        username: nacos
+        password: fangxin12300.
+        file-extension: properties
       discovery:
         server-addr: 192.168.31.7:8848
         username: nacos
@@ -19,3 +21,6 @@ spring:
     loadbalancer:
       nacos:
         enabled: true
+  config:
+    import:
+      - nacos:Book-Service-dev.properties?refresh=true
