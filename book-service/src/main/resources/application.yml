@@ -1,10 +1,15 @@
 server:
   port: 8011
 spring:
+  profiles:
+    active: dev
   application:
     name: Book-Service
   cloud:
     nacos:
+      config:
+        server-addr: 192.168.31.7:8848
+        file-extension: yaml
       discovery:
         server-addr: 192.168.31.7:8848
         username: nacos
