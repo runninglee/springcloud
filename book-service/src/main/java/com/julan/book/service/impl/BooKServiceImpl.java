@@ -11,7 +11,7 @@ import java.util.HashMap;
 @RefreshScope
 public class BooKServiceImpl implements BookService {
 
-    @Value(value = "${custom.name}")
+    @Value(value = "${custom.summary}")
     public String name;
 
     @Override
@@ -21,7 +21,7 @@ public class BooKServiceImpl implements BookService {
         book.put("name", "遥远的救世主");
         book.put("author", "豆豆");
         book.put("published_at", "2005年5月");
-        book.put("custom", name);
+        book.put("summary", name);
         return book;
     }
 }

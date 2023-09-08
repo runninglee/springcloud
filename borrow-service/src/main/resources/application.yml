@@ -1,10 +1,17 @@
 server:
   port: 8082
 spring:
+  profiles:
+    active: dev
   application:
     name: Borrow-Service
   cloud:
     nacos:
+      config:
+        server-addr: 192.168.31.7:8848
+        username: nacos
+        password: fangxin12300.
+        file-extension: yaml
       discovery:
         server-addr: 192.168.31.7:8848
         username: nacos
@@ -19,3 +26,6 @@ spring:
     loadbalancer:
       nacos:
         enabled: true
+  config:
+    import:
+      - nacos:Borrow-Service-dev.yml?refresh=true
